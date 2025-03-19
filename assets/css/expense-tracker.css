@@ -1,0 +1,219 @@
+/* Main Dashboard Styles */
+.expense-tracker-dashboard {
+    @apply bg-gray-50 min-h-screen p-6;
+}
+
+/* Card Animations */
+.summary-card {
+    @apply transform transition-all duration-200 hover:scale-105;
+}
+
+.summary-card:hover {
+    @apply shadow-lg;
+}
+
+/* Value Animations */
+.value-change {
+    @apply transition-all duration-300;
+}
+
+.value-increase {
+    @apply text-green-500;
+    animation: pulse-green 2s ease-in-out;
+}
+
+.value-decrease {
+    @apply text-red-500;
+    animation: pulse-red 2s ease-in-out;
+}
+
+@keyframes pulse-green {
+    0% { background-color: rgba(34, 197, 94, 0); }
+    50% { background-color: rgba(34, 197, 94, 0.1); }
+    100% { background-color: rgba(34, 197, 94, 0); }
+}
+
+@keyframes pulse-red {
+    0% { background-color: rgba(239, 68, 68, 0); }
+    50% { background-color: rgba(239, 68, 68, 0.1); }
+    100% { background-color: rgba(239, 68, 68, 0); }
+}
+
+/* Modal Styles */
+.modal-backdrop {
+    @apply fixed inset-0 bg-black bg-opacity-50 transition-opacity duration-300;
+}
+
+.modal-container {
+    @apply fixed inset-0 z-50 overflow-y-auto;
+}
+
+.modal-content {
+    @apply relative transform transition-all duration-300 sm:max-w-lg sm:w-full m-3 sm:mx-auto;
+}
+
+.modal-enter {
+    @apply opacity-0;
+}
+
+.modal-enter-active {
+    @apply opacity-100;
+}
+
+.modal-exit {
+    @apply opacity-100;
+}
+
+.modal-exit-active {
+    @apply opacity-0;
+}
+
+/* Form Styles */
+.form-input {
+    @apply mt-1 block w-full rounded-md border-gray-300 shadow-sm 
+    focus:border-blue-500 focus:ring-blue-500 sm:text-sm;
+}
+
+.form-select {
+    @apply mt-1 block w-full rounded-md border-gray-300 shadow-sm 
+    focus:border-blue-500 focus:ring-blue-500 sm:text-sm;
+}
+
+.form-label {
+    @apply block text-sm font-medium text-gray-700;
+}
+
+/* Button Styles */
+.btn {
+    @apply px-4 py-2 rounded-md transition-colors duration-200 
+    flex items-center justify-center gap-2;
+}
+
+.btn-primary {
+    @apply bg-blue-500 text-white hover:bg-blue-600;
+}
+
+.btn-success {
+    @apply bg-green-500 text-white hover:bg-green-600;
+}
+
+.btn-danger {
+    @apply bg-red-500 text-white hover:bg-red-600;
+}
+
+.btn-secondary {
+    @apply bg-gray-500 text-white hover:bg-gray-600;
+}
+
+/* Loading States */
+.loading {
+    @apply relative pointer-events-none opacity-75;
+}
+
+.loading::after {
+    content: '';
+    @apply absolute inset-0 flex items-center justify-center;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24'%3E%3Cpath stroke='%236B7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'%3E%3C/path%3E%3C/svg%3E");
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Notification Styles */
+.notification-container {
+    @apply fixed bottom-4 right-4 z-50;
+}
+
+.notification {
+    @apply flex items-center p-4 mb-4 rounded-lg shadow-lg transform transition-all duration-300;
+}
+
+.notification-success {
+    @apply bg-green-500 text-white;
+}
+
+.notification-error {
+    @apply bg-red-500 text-white;
+}
+
+.notification-info {
+    @apply bg-blue-500 text-white;
+}
+
+/* Transaction List Styles */
+.transaction-list {
+    @apply space-y-4 overflow-hidden;
+}
+
+.transaction-item {
+    @apply flex items-center justify-between p-4 bg-white rounded-lg 
+    shadow-sm hover:shadow-md transition-all duration-200;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+    .expense-tracker-dashboard {
+        @apply p-4;
+    }
+
+    .modal-content {
+        @apply mx-4;
+    }
+
+    .transaction-item {
+        @apply flex-col items-start gap-2;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .expense-tracker-dashboard {
+        @apply bg-white p-0;
+    }
+
+    .btn, 
+    .modal-trigger,
+    .notification-container {
+        @apply hidden;
+    }
+
+    .transaction-item {
+        @apply shadow-none border border-gray-200;
+    }
+}
+
+/* WordPress Admin Integration */
+.wp-admin {
+    .expense-tracker-dashboard {
+        @apply mt-4 mx-auto max-w-7xl;
+    }
+
+    #wpcontent {
+        @apply p-0;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    .expense-tracker-dashboard {
+        @apply bg-gray-900;
+    }
+
+    .summary-card,
+    .transaction-item,
+    .modal-content {
+        @apply bg-gray-800 text-white;
+    }
+
+    .form-input,
+    .form-select {
+        @apply bg-gray-700 border-gray-600 text-white;
+    }
+
+    .form-label {
+        @apply text-gray-300;
+    }
+}
