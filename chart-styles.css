@@ -1,0 +1,150 @@
+/* Chart Container Styles */
+.chart-container {
+    position: relative;
+    transition: transform 0.3s ease;
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.chart-container:hover {
+    transform: translateY(-5px);
+}
+
+/* Chart Canvas Styles */
+canvas {
+    border-radius: 0.5rem;
+}
+
+/* Chart Title Styles */
+.chart-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+/* Chart Legend Styles */
+.chart-legend {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding: 0.5rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+    color: #4b5563;
+}
+
+.legend-color {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+}
+
+/* Loading State */
+.chart-loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+    z-index: 10;
+}
+
+.loading-spinner {
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #3b82f6;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Tooltip Custom Styles */
+.custom-tooltip {
+    background: white !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    border-radius: 0.375rem !important;
+    padding: 0.75rem !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+}
+
+.tooltip-header {
+    font-weight: 600;
+    color: #1f2937;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 0.5rem;
+}
+
+.tooltip-body {
+    color: #4b5563;
+    font-size: 0.875rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .chart-container {
+        margin-bottom: 1.5rem;
+    }
+
+    .chart-legend {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Animation for Chart Updates */
+@keyframes chartFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.chart-animate {
+    animation: chartFadeIn 0.5s ease-out;
+}
+
+/* Chart Grid Lines */
+.chart-grid-line {
+    stroke: rgba(0, 0, 0, 0.05);
+    stroke-width: 1;
+}
+
+/* Chart Axis Labels */
+.chart-axis-label {
+    font-size: 0.75rem;
+    fill: #6b7280;
+}
+
+/* Chart Point Styles */
+.chart-point {
+    transition: all 0.2s ease;
+}
+
+.chart-point:hover {
+    transform: scale(1.2);
+}
